@@ -1,6 +1,6 @@
 stages:
   preprocess:
-    cmd: python preprocess.py
+    cmd: conda run -n ml-env python preprocess.py
     deps:
       - preprocess.py
     outs:
@@ -9,7 +9,7 @@ stages:
       - data/test.csv
 
   train:
-    cmd: python train.py
+    cmd: conda run -n ml-env python train.py
     deps:
       - train.py
       - data/train.csv
@@ -17,7 +17,7 @@ stages:
       - models/model.pkl
 
   validate:
-    cmd: python validate.py
+    cmd: conda run -n ml-env python validate.py
     deps:
       - validate.py
       - models/model.pkl
