@@ -2,7 +2,7 @@
 import os
 import joblib
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 
 # load data
 df = pd.read_csv('data/train.csv')
@@ -11,10 +11,10 @@ X = df.drop(columns=[target_col])
 y = df[target_col]
 
 # train
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+model = LogisticRegression(max_iter=2000, random_state=42)
 model.fit(X, y)
 
 # save
 os.makedirs('models', exist_ok=True)
 joblib.dump(model, 'models/model.pkl')
-print("Random Forest model saved to models/model.pkl")
+print("Logistic Regression model saved to models/model.pkl")
