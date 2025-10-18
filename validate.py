@@ -12,7 +12,7 @@ import os
 if not os.path.exists('models/model.pkl'):
     raise FileNotFoundError("Model not found at models/model.pkl — run train stage first.")
 
-test_df = pd.read_csv('data/test_encoded.csv')
+test_df = pd.read_csv('data/test.csv')
 # detect target column (last column)
 target_col = test_df.columns[-1]
 X_test = test_df.drop(columns=[target_col])

@@ -89,11 +89,11 @@ train_df = pd.concat([X_train_final, pd.Series(y_train.reset_index(drop=True), n
 test_df = pd.concat([X_test_final, pd.Series(y_test.reset_index(drop=True), name=target_col)], axis=1)
 
 # save
-train_df.to_csv("data/train_encoded.csv", index=False)
-test_df.to_csv("data/test_encoded.csv", index=False)
+train_df.to_csv("data/train.csv", index=False)
+test_df.to_csv("data/test.csv", index=False)
 df.to_csv("data/data_raw.csv", index=False)
 
 print("Saved:")
 print(" - data/data_raw.csv")
-print(" - data/train_encoded.csv")
-print(" - data/test_encoded.csv")
+print(" - data/train.csv")
+print(" - data/test.csv")

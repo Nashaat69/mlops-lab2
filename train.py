@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
 # load data
-df = pd.read_csv('data/train_encoded.csv')
+df = pd.read_csv('data/train.csv')
 target_col = df.columns[-1]
 X = df.drop(columns=[target_col])
 y = df[target_col]
