@@ -14,13 +14,14 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 import numpy as np
 
 # ---- CONFIG ----
-URL = "https://raw.githubusercontent.com/plotly/datasets/master/heart.csv"
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/Heart%20Disease.csv"
+
 # ----------------
 
 os.makedirs("data", exist_ok=True)
 
 print("Downloading dataset...")
-df = pd.read_csv(URL)
+df = pd.read_csv("data/heart.csv")
 print(f"Loaded {len(df)} rows — columns: {list(df.columns)}")
 
 # --- Find target column ---
@@ -57,7 +58,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # fit encoder on train categorical (if any)
 if len(cat_cols) > 0:
     # use sparse=False for compatibility; if your sklearn warns, it's okay
-    encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
+    encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
     X_train_cat = encoder.fit_transform(X_train[cat_cols])
     X_test_cat = encoder.transform(X_test[cat_cols])
     cat_feature_names = list(encoder.get_feature_names_out(cat_cols))
